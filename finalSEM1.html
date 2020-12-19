@@ -1,0 +1,136 @@
+<html>
+<center>
+    <head>
+      <title>Guess the Character</title>
+      <script>
+            var pictures = ["<img src='luigi.png' width='300px' length='200px'>","<img src = 'squidward.png' width='300px' length='200px'>","<img src = 'flash.png' width='300px' length='110px'>","<img src = 'link.png' width='300px' length='80px'>", "<img src = 'shaggy.png' width='24%' length='24%'>", "<img src='result.jpg' width='22%' length='22%'>"  ];
+            var answers = ["luigi", "squidward", "flash", "link", "shaggy"];
+            var answers2 = ["Luigi", "Squidward", "The Flash", "Link", "Shaggy"];
+            var inputs = [];
+            var index = 0;
+            var score = 0;
+            var table = "";
+            function getUserinputs()
+            {
+              inputs[index] = document.getElementById('userAns').value;
+              index = index + 1;
+              if(index >= 5)
+              {
+                checkinputs();
+              }
+              document.getElementById('picture').innerHTML =pictures[index];
+            }
+
+            function checkinputs()
+            {
+              if(inputs[0] == answers[0] || inputs[0] == answers2[0])
+              {
+                score++;
+              }
+              if(inputs[1] == answers[1] || inputs[1] == answers2[1])
+              {
+                score++;
+              }
+
+              if(inputs[2] == answers[2] || inputs[2] == answers2[2])
+              {
+                score++;
+              }
+
+              if(inputs[3] == answers[3] || inputs[3] == answers2[3])
+              {
+                score++;
+              }
+
+              if(inputs[4] == answers[4] || inputs[4] == answers2[4])
+              {
+                score++;
+              }
+
+              if(inputs[5] == answers[5] || inputs[5] == answers2[5])
+              {
+                score++;
+              }
+              displayResult();
+            }
+
+            function displayResult()
+            {
+              table = table + "SCORE: " + "&nbsp" + score + "/5" + "<br><br><br>" +
+                              "#1 input -- " + answers[0] + "&nbsp &nbsp &nbsp &nbsp" + "YOUR input -- " + inputs[0] + "<br><br>" +
+                              "#2 input -- " + answers[1] + "&nbsp &nbsp &nbsp &nbsp" + "YOUR input -- " + inputs[1] + "<br><br>" +
+                              "#3 input -- " + answers[2] + "&nbsp &nbsp &nbsp &nbsp" + "YOUR input -- " + inputs[2] + "<br><br>" +
+                              "#4 input -- " + answers[3] + "&nbsp &nbsp &nbsp &nbsp" + "YOUR input -- " + inputs[3] + "<br><br>" +
+                              "#5 input -- " + answers[4] + "&nbsp &nbsp &nbsp &nbsp" + "YOUR input -- " + inputs[4];
+
+              document.getElementById('display').innerHTML = table;
+              document.getElementById('again').style.visibility = "visible";
+            }
+
+            function reset()
+            {
+              score = 0;
+              table = "";
+              var target = 1;
+              for(var i=inputs.length-1;i>=0; i--)
+            {
+              if(inputs[i] == target)
+              {
+                inputs.splice(i,1);
+              }
+            }
+              document.getElementById('display').innerHTML = table ;
+              document.getElementById('picture').innerHTML = pictures[0];
+              document.getElementById('again').style.visibility = "hidden";
+              index = 0;
+            }
+
+            function hide()
+            {
+              document.getElementById('again').style.visibility = "hidden";
+            }
+      </script>
+    </head>
+
+
+    <body onload="hide()">
+       <h2>Guess That Character</h2>
+       <br><br>
+       <span id="picture"><img src="luigi.png" width='300px' length='200px'></span>
+       <br><br>
+       <span id="display"></span>
+       <br><br>
+       <input id="userAns" type="text" onfocus="this.value=''">
+       <input id="NEXT" type="button" value="NEXT" onclick="getUserinputs()">
+       <input id="again" type="button" value="RESTART" onload="hide()" onclick="reset()">
+       <style>
+         body {background-color: tomato;
+               text-align: center;
+             font: Arial, sans-serif;}
+         h1 {font-size: 100px;
+             background-color: SlateBlue;
+             color: yellow;
+             border: 10px;
+           font: Arial, sans-serif;}
+         h2 {font-size: 50px;
+             background-color: LightSeaGreen;
+             color: yellow;
+             border: 10px;
+           font: Arial, sans-serif;}
+         input {background-color: MediumSeaGreen;
+                 color: black;
+                 font-size: 20px;
+               font: Arial, sans-serif;}
+         input:hover {
+           color: LightGray;
+           background-color: Black;
+         font: Arial, sans-serif;}
+         h1:hover {
+           color:white;
+           background-color: SlateBlue;
+           font: Arial, sans-serif;
+         }
+       </style>
+    </body>
+</center>
+</html>
